@@ -24,10 +24,9 @@ class GalleryItem extends Component{
                 <div>
                         {/* {JSON.stringify(this.props.galleryPath)} */}
                         {this.state.flipCard ?
-                            <div height="100px" width="100px" onClick={this.changeFlipCard}>{this.props.galleryArray.description}</div>
-                               
+                            <img src={this.props.galleryArray.path} height="100px" alt={this.props.galleryArray.description} onClick={this.changeFlipCard}/>       
                         :
-                            <img src={this.props.galleryArray.path} height="100px" alt={this.props.galleryArray.description} onClick={this.changeFlipCard}/>
+                            <div height="100px" width="100px" onClick={this.changeFlipCard}>{this.props.galleryArray.description}</div>
                         }
                         
                     
