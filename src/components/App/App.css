@@ -21,3 +21,13 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.galleryItem {
+  display: inline-block;
+  margin: 50px;
+  overflow-wrap: break-word;
+  height: 100px;
+  width: 100px;
+  border: 2px solid black;
+  text-align: center;
+}
