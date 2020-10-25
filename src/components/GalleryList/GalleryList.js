@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import GalleryItem from '../GalleryItem/GalleryItem';
 
 
-class Gallery extends Component{
+class GalleryList extends Component{
     state = {
         flipCard: true
     // newGalleryItem: {
@@ -22,9 +23,9 @@ class Gallery extends Component{
         return(
                 <>
                     {this.props.galleryArray.map((element) => {
-                        if (this.state.flipCard) {
+                        
                             return <div key={element.id} className="galleryItem">
-                            <img src={element.path} height="100px" alt={element.description} onClick={this.changeFlipCard}/>
+                            <GalleryItem galleryArray={element}/>
                             <p>
                                 <br></br>
                                 {Number(element.likes) > 0 ?
@@ -34,20 +35,7 @@ class Gallery extends Component{
                                 }
                             </p> 
                             </div>
-                        }
-                        else {
-                            return <div key={element.id} className="galleryItem">
-                            <div src={element.path} height="100px" width="100px" onClick={this.changeFlipCard}>{element.description}</div>
-                            <p>
-                                <br></br>
-                                {Number(element.likes) > 0 ?
-                                <>{element.likes} people love this!</>
-                                :
-                                <>Be the first to love this!</>
-                                }
-                            </p> 
-                            </div>
-                        }
+                        
                         
                     })}
                 </>
@@ -55,4 +43,4 @@ class Gallery extends Component{
     }
 }
 
-export default Gallery;
+export default GalleryList;

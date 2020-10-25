@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Gallery from '../Gallery/Gallery';
+import GalleryList from '../GalleryList/GalleryList';
 import axios from 'axios';
 
 class App extends Component {
@@ -42,7 +42,7 @@ class App extends Component {
           <h1 className="App-title">Gallery of my life</h1>
         </header>
         <br/>
-        <Gallery galleryArray={this.state.galleryArray}/>
+        <GalleryList galleryArray={this.state.galleryArray}/>
       </div>
     );
   }
