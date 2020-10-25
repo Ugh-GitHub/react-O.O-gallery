@@ -4,7 +4,7 @@
 
 .App-header {
   background-color: #222;
-  height: 70px;
+  height: 100px;
   padding: 20px;
   color: white;
 }
@@ -23,6 +23,7 @@
 }
 
 .galleryItem {
+  vertical-align: text-top;
   display: inline-block;
   margin: 50px;
   overflow-wrap: break-word;

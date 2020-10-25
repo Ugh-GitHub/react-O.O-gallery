@@ -6,12 +6,11 @@ import axios from 'axios';
 class App extends Component {
   state = {
       galleryArray: [],
-      // newGalleryItem: {
-      //   id: 'NULL',
-      //   path: 'NULL',
-      //   description: 'NULL',
-      //   likes: 0
-      // }
+      newGalleryItem: {
+        path: 'NULL',
+        description: 'NULL',
+        likes: 0
+      }
   }
 
   componentDidMount = () => {
@@ -35,11 +34,44 @@ class App extends Component {
     });
   }
 
+  handleChange = (event, keyParam) => {
+    console.log(event.target.value);
+    this.setState({
+      newGalleryItem: {
+      ...this.state.newGalleryItem,
+      [keyParam]: event.target.value
+      }
+    });
+  }
+
+  submitGalleryItem = (event) => {
+    console.log("Made it to post");
+    console.log(this.state.newGalleryItem)
+    
+    axios({
+      method: 'POST',
+      url: '/gallery',
+      data: this.state.newGalleryItem
+    }).then((response) => {
+      this.onReady();
+      
+      console.log(response);
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Gallery of my life</h1>
+          <br></br>
+          <label htmlFor="path">Path for image:</label>
+          <input onChange={(event) => this.handleChange(event, 'path')} type="text" id="path"/>
+          <label htmlFor="description">Descrition:</label>
+          <input onChange={(event) => this.handleChange(event, 'description')} type="text" id="description"/>
+          <button onClick={this.submitGalleryItem} id="submit">Submit</button>
         </header>
         <br/>
         <GalleryList onReady={this.onReady} galleryArray={this.state.galleryArray}/>
