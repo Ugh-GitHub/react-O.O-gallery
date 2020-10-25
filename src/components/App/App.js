@@ -1,7 +1,40 @@
 import React, { Component } from 'react';
 import './App.css';
+import Gallery from '../Gallery/Gallery';
+import axios from 'axios';
 
 class App extends Component {
+  state = {
+      galleryArray: [],
+      // newGalleryItem: {
+      //   id: 'NULL',
+      //   path: 'NULL',
+      //   description: 'NULL',
+      //   likes: 0
+      // }
+  }
+
+  componentDidMount = () => {
+    console.log("app js is mounted");
+    this.onReady();
+  }
+
+  onReady = () => {
+    console.log("in onReady");
+    axios({
+      method: 'GET',
+      url: '/gallery'
+    }).then((response) => {
+      console.log(response.data);
+      this.setState({
+        galleryArray: response.data
+      })
+      // console.log(galleryArray);
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
+
   render() {
     return (
       <div className="App">
@@ -9,8 +42,7 @@ class App extends Component {
           <h1 className="App-title">Gallery of my life</h1>
         </header>
         <br/>
-        <p>Gallery goes here</p>
-        <img src="images/goat_small.jpg"/>
+        <Gallery galleryArray={this.state.galleryArray}/>
       </div>
     );
   }
