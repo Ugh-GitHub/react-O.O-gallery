@@ -60,8 +60,7 @@ class App extends Component {
       console.log(error);
     });
   }
-
-  render() {
+    render() {
     return (
       <div className="App">
         <header className="App-header">

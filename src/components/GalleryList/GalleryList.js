@@ -2,7 +2,13 @@ import React, { Component } from 'react';
 import GalleryItem from '../GalleryItem/GalleryItem';
 import axios from 'axios';
 
+import Draggable from 'react-draggable'; // Both at the same time
+ 
+// CommonJS
+
+
 class GalleryList extends Component{
+
     state = {
         flipCard: true
     // newGalleryItem: {
@@ -30,7 +36,7 @@ class GalleryList extends Component{
 
     render(){
         return(
-                <>
+                <Draggable>
                     {this.props.galleryArray.map((element) => {
                         
                             return <div key={element.id} className="galleryItem">
@@ -49,7 +55,7 @@ class GalleryList extends Component{
                         
                         
                     })}
-                </>
+                </Draggable>
             )
     }
 }
